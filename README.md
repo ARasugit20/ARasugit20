@@ -65,9 +65,9 @@ Hard part: static report generation from structured company/role data with optio
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 ---
@@ -75,8 +75,20 @@ Hard part: static report generation from structured company/role data with optio
 ## GitHub Stats
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ARasugit20&theme=radical" alt="GitHub stats" width="49%" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ARasugit20&theme=radical" alt="Top languages" width="49%" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=ARasugit20&show_icons=true&theme=dark&hide_border=true&bg_color=0D1117&title_color=F72585&icon_color=F72585&text_color=C9D1D9" alt="GitHub stats" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ARasugit20&layout=donut&theme=dark&hide_border=true&bg_color=0D1117&title_color=F72585&text_color=C9D1D9" alt="Top languages" />
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com/?user=ARasugit20&theme=dark&hide_border=true&background=0D1117&ring=F72585&fire=F72585&currStreakLabel=F72585" alt="GitHub streak" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ARasugit20&theme=react-dark&bg_color=0D1117&color=F72585&line=F72585&point=C9D1D9&hide_border=true" alt="Contribution graph" width="90%" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ARasugit20/ARasugit20/output/github-contribution-grid-snake-dark.svg" alt="Contribution snake" width="90%" />
 </p>
 
 ---
