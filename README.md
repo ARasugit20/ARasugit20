@@ -1,61 +1,70 @@
 # Aditya Ranjan
 
-Award-winning builder focused on **machine learning**, **sports analytics**, and **full-stack systems** that turn messy real-world data into decisions people can act on.
+Builder focused on **data pipelines**, **ML with honest evaluation**, and **full-stack systems** where the README matches what is in the repo.
 
 ---
 
-## Award-Winning Projects
+## Award-Winning Project
 
 ### Redreemer
 
 **State Farm Track Winner — Innovation Hacks 2.0**
 
-SMS-based financial empowerment for people without smartphones, bank accounts, or stable addresses — an 8-step guided path from survival to financial independence.
+Hackathon-winning **caseworker console and marketing site** (React, Vite, shadcn/ui) for a financial-independence concept aimed at caseworkers supporting unhoused and re-entry clients.
 
-Hard part: a 20-layer detection pipeline that routes crisis, scam, and benefits messages before Gemini ever responds.
+What ships today: dashboard UI with hardcoded `MOCK_CLIENTS`, landing pages, and Vitest coverage on the frontend — **not wired to a live backend or outbound messaging**.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-redreemer.vercel.app-22c55e?style=for-the-badge)](https://redreemer.vercel.app/)
 [![Repo](https://img.shields.io/badge/Repo-redreemer--path--forward-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/redreemer-path-forward)
-
-### Civilian
-
-**Governance & Collaboration Track Winner — HackASU 2026 (sole winner in track)**
-
-AI civic platform that turns a resident's complaint in any of 70+ languages into a formal government request with ordinance citations and automated follow-up.
-
-Hard part: Claude-powered authority routing plus TinyFish agents that monitor silence and escalate when officials don't respond.
-
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-gocivilian.org-22c55e?style=for-the-badge)](https://www.gocivilian.org)
-[![Repo](https://img.shields.io/badge/Repo-Civilian-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Civilian)
 
 ---
 
 ## Featured Projects
 
-### PlayerVec
+Projects below are written to survive a click-through. Each claim maps to code in the linked repo.
 
-PyTorch autoencoder that compresses World Cup player stats into 32-dim embeddings and rolls them into team style DNA for fixture matchup diagnosis.
+### eventLedger
 
-Hard part: unsupervised player clustering without position labels, then minute-weighted squad fingerprints and FAISS search at scale.
+Idempotent event-ingestion API: Redis `SET NX` fast dedupe, Postgres `UNIQUE(idempotency_key)` durable dedupe, Redis Streams workers, and a Postgres-backed DLQ after max delivery attempts.
 
-[![Repo](https://img.shields.io/badge/Repo-PlayerVec-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/PlayerVec)
+Hard part: concurrency proof — 50 parallel POSTs with the same idempotency key yield exactly one persisted event (`tests/test_concurrency.py`).
+
+[![Repo](https://img.shields.io/badge/Repo-eventLedger-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/eventLedger)
+
+### CreditRisk_
+
+Credit default modeling with an explicit leakage story: dbt-DuckDB warehouse → feature mart → temporal holdout XGBoost with post-origination columns stripped via `LEAKAGE_COLUMNS` and enforced in `tests/test_no_leakage.py`.
+
+Hard part: temporal ROC AUC **0.707** on held-out vintages (`results/temporal_metrics.json`) — not the ~0.99 figures that appear only in narrative docs without a paired before-metrics artifact.
+
+[![Repo](https://img.shields.io/badge/Repo-CreditRisk_-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/CreditRisk_)
+
+### Model-Lineage-Guard
+
+DataHub-aware CLI that scans ML lineage for schema drift, PII exposure, feature leakage, and related production risks; writes audit tags back and exits **code 3** for CI gating with `--fail-on`.
+
+Hard part: live CI boots DataHub, seeds demo lineage, runs scan + write-back verification (`.github/workflows/ci.yml`).
+
+[![Repo](https://img.shields.io/badge/Repo-Model--Lineage--Guard-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Model-Lineage-Guard)
+
+### Civilian
+
+**Governance & Collaboration Track Winner — HackASU 2026 (sole winner in track)**
+
+Shipped civic web app: compose a complaint → Claude analysis with web search → formal letter → InsForge persistence → echo/forum/map views. Translation via Claude for 72 compose languages.
+
+Hard part: end-to-end flow under hackathon constraints; forum still merges static demo threads with live DB posts (`lib/civicData.js`).
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-gocivilian.org-22c55e?style=for-the-badge)](https://www.gocivilian.org)
+[![Repo](https://img.shields.io/badge/Repo-Civilian-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Civilian)
 
 ### Chronos
 
-Event-driven quant research agent that ingests news and macro events, maps them to ticker themes, scores probability, and sizes positions with Kelly caps.
+Event-driven quant research stack (FastAPI, Celery, PostgreSQL, Redis, React dashboard): ingest events, score with LightGBM + isotonic calibration, size with half-Kelly caps.
 
-Hard part: end-to-end pipeline with Celery workers, dedup, calibration stubs, and half-Kelly risk controls under real latency constraints.
+Hard part: committed fixture `resolved_predictions.json` reports **Brier 0.2167 on n=28** resolved decisions (`docs/outcomes.md`) — **mock price track**, calibration quality not trading P&L; default deploy uses mock news and mock prices.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-chronos--frontend.onrender.com-22c55e?style=for-the-badge)](https://chronos-frontend.onrender.com)
 [![Repo](https://img.shields.io/badge/Repo-Chronos-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Chronos)
-
-### Career Signal
-
-Role intelligence engine for CS students — pick a company and role, get a Signal Report with project ideas, JD keywords, and interview framing.
-
-Hard part: static report generation from structured company/role data with optional Claude-backed AI mode and shareable report URLs.
-
-[![Repo](https://img.shields.io/badge/Repo-Career--signal-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Career-signal)
 
 ---
 
@@ -63,11 +72,9 @@ Hard part: static report generation from structured company/role data with optio
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 ---
@@ -75,20 +82,8 @@ Hard part: static report generation from structured company/role data with optio
 ## GitHub Stats
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=ARasugit20&show_icons=true&theme=dark&hide_border=true&bg_color=0D1117&title_color=F72585&icon_color=F72585&text_color=C9D1D9" alt="GitHub stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ARasugit20&layout=donut&theme=dark&hide_border=true&bg_color=0D1117&title_color=F72585&text_color=C9D1D9" alt="Top languages" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com/?user=ARasugit20&theme=dark&hide_border=true&background=0D1117&ring=F72585&fire=F72585&currStreakLabel=F72585" alt="GitHub streak" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ARasugit20&theme=react-dark&bg_color=0D1117&color=F72585&line=F72585&point=C9D1D9&hide_border=true" alt="Contribution graph" width="90%" />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ARasugit20/ARasugit20/output/github-contribution-grid-snake-dark.svg" alt="Contribution snake" width="90%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=ARasugit20&theme=radical" alt="GitHub stats" width="49%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ARasugit20&theme=radical" alt="Top languages" width="49%" />
 </p>
 
 ---
