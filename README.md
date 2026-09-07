@@ -42,12 +42,10 @@ Hard part: deterministic replay under reorgs, idempotent event ingestion under C
 
 ### Model Lineage Guard
 
-DataHub-aware CLI that scans ML lineage for production risks (schema drift, PII exposure, feature leakage, stale data, performance regression, etc.). Writes audit tags via MCPs with a safety-first dry-run/apply policy. Offline demo surfaces 11 findings in ~1.2s; CI verifies tags land on live DataHub.
-
-Hard part: policy-gated write-back (irreversible tags need human review), deterministic finding IDs for risk diffing, and CI proof that dry-run never mutates.
+DataHub-aware CLI that scans ML model lineage for nine upstream production risks and writes policy-gated audit tags back into DataHub — not just read-only checks. Differentiated by dry-run-by-default write-back, `--confirm`-gated apply, and policy exclusions for judgment-heavy findings; CI boots real DataHub, applies tags, and verifies read-back. Offline demo surfaces 11 findings; `--fail-on high` exits 3 to block PRs.
 
 [![Repo](https://img.shields.io/badge/Repo-Model--Lineage--Guard-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Model-Lineage-Guard)
-[![View Sample Report](https://img.shields.io/badge/Sample%20Report-examples%2Fsample_report.html-blue?style=for-the-badge)](https://github.com/ARasugit20/Model-Lineage-Guard/blob/main/examples/sample_report.html)
+[![View Sample Report](https://img.shields.io/badge/Sample%20Report-examples%2Freport.html-blue?style=for-the-badge)](https://github.com/ARasugit20/Model-Lineage-Guard/blob/main/examples/report.html)
 
 ---
 
