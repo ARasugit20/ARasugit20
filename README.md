@@ -1,21 +1,12 @@
 # Aditya Ranjan
 
-Award-winning builder focused on **machine learning**, **sports analytics**, and **full-stack systems** that turn messy real-world data into decisions people can act on.
+**CS @ Arizona State University (May 2027) · 3× Hackathon Winner · Open to Summer 2027 SWE / AI engineering internships**
+
+I build AI systems and backend infrastructure for real users, with safety, privacy, and reliability designed in from the start: multi-agent products, LLM pipelines with guardrails, and idempotent event systems. Sports analytics and ML are a side interest.
 
 ---
 
 ## Award-Winning Projects
-
-### Redreemer
-
-**State Farm Track Winner — Innovation Hacks 2.0**
-
-SMS-based financial empowerment for people without smartphones, bank accounts, or stable addresses — an 8-step guided path from survival to financial independence.
-
-Hard part: a 20-layer detection pipeline that routes crisis, scam, and benefits messages before Gemini ever responds.
-
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-redreemer.vercel.app-22c55e?style=for-the-badge)](https://redreemer.vercel.app/)
-[![Repo](https://img.shields.io/badge/Repo-redreemer--path--forward-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/redreemer-path-forward)
 
 ### Civilian
 
@@ -28,21 +19,46 @@ Hard part: Claude-powered authority routing plus TinyFish agents that monitor si
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-gocivilian.org-22c55e?style=for-the-badge)](https://www.gocivilian.org)
 [![Repo](https://img.shields.io/badge/Repo-Civilian-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Civilian)
 
+### Redreemer
+
+**State Farm Track Winner — Innovation Hacks 2.0**
+
+SMS-based financial empowerment for people without smartphones, bank accounts, or stable addresses — an 8-step guided path from survival to financial independence.
+
+Hard part: a 20-layer detection pipeline that routes crisis, scam, and benefits messages before Gemini ever responds.
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-redreemer.vercel.app-22c55e?style=for-the-badge)](https://redreemer.vercel.app/)
+[![Repo](https://img.shields.io/badge/Repo-redreemer--path--forward-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/redreemer-path-forward)
+
+### Hirearchy
+
+**Track 2 Winner — Cubbie Hackathon (Oct 2026)**
+
+Multi-agent networking for student job hunts: each student has a personal AI agent, a broker sees only anonymized listings, and agents negotiate prep sessions and share interview intel, revealing names only after everyone consents. Deterministic code makes every decision; the LLM only words messages.
+
+Built with Sumedha Gupta. I owned the Find, Ask, Pipeline, and Intel features plus the Discord and LLM integrations.
+
+Hard part: privacy enforced in the data layer, not just the UI — company pipeline stats stay hidden until 3+ independent reports, interview reports are scrubbed of emails, phones, handles, and exact dates, and a sabotage suite plants identity leaks and fails if any slip through (357 tests across my suites).
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-hirearchy--agents.vercel.app-22c55e?style=for-the-badge)](https://hirearchy-agents.vercel.app)
+[![Repo](https://img.shields.io/badge/Repo-sgupt354%2Fhirearchy--agents-181717?style=for-the-badge&logo=github)](https://github.com/sgupt354/hirearchy-agents)
+
 ---
 
 ## Featured Projects
 
 ### EventLedger
 
-Blockchain event indexer that ingests cross-chain transactions and transforms them into a queryable graph of settlement flows and audit events. Designed for fintech reconciliation and immutable compliance trails.
+Idempotent event ingestion for retry-heavy order, claims, and webhook workflows: a retried request never creates a second durable event or runs the handler twice.
 
-Hard part: deterministic replay under reorgs, idempotent event ingestion under CI retries, and fast temporal queries on lineage.
+Hard part: layered dedup — a Postgres lookup for committed keys, Redis `SET NX` for in-flight requests, a `UNIQUE(idempotency_key)` constraint as the final race arbiter, and an atomic `received → processing` claim so only one worker owns an event. CI runs Postgres-backed integration tests via testcontainers; an AWS companion runs the same design on SQS + DynamoDB + Lambda.
 
-[![Repo](https://img.shields.io/badge/Repo-EventLedger-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/EventLedger)
+[![Repo](https://img.shields.io/badge/Repo-eventLedger-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/eventLedger)
+[![AWS Version](https://img.shields.io/badge/AWS%20Version-eventledger--aws-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://github.com/ARasugit20/eventledger-aws)
 
 ### Model Lineage Guard
 
-DataHub-aware CLI that scans ML lineage for production risks (schema drift, PII exposure, feature leakage, stale data, performance regression, etc.). Writes audit tags via MCPs with a safety-first dry-run/apply policy. Offline demo surfaces 11 findings in ~1.2s; CI verifies tags land on live DataHub.
+DataHub-aware CLI agent with 9 risk checks (schema-hash drift, PII exposure, PII column classification, stale data, freshness SLA, missing owner, feature leakage, performance regression, deploy-config drift). Outputs JSON/HTML/Markdown reports and a `--fail-on` CI gate that blocks risky merges. Offline demo surfaces 11 findings in ~1.2s. Built for the DataHub Agent Hackathon.
 
 Hard part: policy-gated write-back (irreversible tags need human review), deterministic finding IDs for risk diffing, and CI proof that dry-run never mutates.
 
@@ -65,7 +81,7 @@ Hard part: unsupervised player clustering without position labels, then minute-w
 
 Event-driven quant research agent that ingests news and macro events, maps them to ticker themes, scores probability, and sizes positions with Kelly caps.
 
-Hard part: end-to-end pipeline with Celery workers, dedup, calibration stubs, and half-Kelly risk controls under real latency constraints.
+Hard part: end-to-end pipeline with Celery workers, Redis + Postgres dedup, calibration stubs, and half-Kelly risk controls — built on FastAPI, Celery, Redis, PostgreSQL, React, Docker, and Prometheus.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-chronos--frontend.onrender.com-22c55e?style=for-the-badge)](https://chronos-frontend.onrender.com)
 [![Repo](https://img.shields.io/badge/Repo-Chronos-181717?style=for-the-badge&logo=github)](https://github.com/ARasugit20/Chronos)
@@ -82,31 +98,15 @@ Hard part: static report generation from structured company/role data with optio
 
 ## Tech
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+**Languages:** Python, TypeScript, Java, C/C++, SQL<br>
+**Backend & data:** FastAPI, Node.js, PostgreSQL, Redis, Celery, Supabase<br>
+**Frontend:** React, Next.js<br>
+**AI/ML:** PyTorch, LLM APIs (Claude, Gemini), agent orchestration<br>
+**Infra:** Docker, GitHub Actions, GCP, AWS (Lambda, SQS, DynamoDB)
 
 ---
 
-## GitHub Stats
-
-<p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=ARasugit20&show_icons=true&theme=dark&hide_border=true&bg_color=0D1117&title_color=F72585&icon_color=F72585&text_color=C9D1D9" alt="GitHub stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ARasugit20&layout=donut&theme=dark&hide_border=true&bg_color=0D1117&title_color=F72585&text_color=C9D1D9" alt="Top languages" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com/?user=ARasugit20&theme=dark&hide_border=true&background=0D1117&ring=F72585&fire=F72585&currStreakLabel=F72585" alt="GitHub streak" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ARasugit20&theme=react-dark&bg_color=0D1117&color=F72585&line=F72585&point=C9D1D9&hide_border=true" alt="Contribution graph" width="90%" />
-</p>
+## GitHub Activity
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/ARasugit20/ARasugit20/output/github-contribution-grid-snake-dark.svg" alt="Contribution snake" width="90%" />
